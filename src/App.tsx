@@ -1,24 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Card } from "./components/card/Card";
+import "./index.scss";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="page">
+      <h1>Digitale oplossingen die meegroeien.</h1>
+      <Card.Row>
+        <Card
+          title="Experience & Design"
+          description="We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. "
+          ctaLabel="Ontdek meer"
+          href="#"
+        />
+        <Card
+          title="Development & Engineering"
+          description="We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. "
+          ctaLabel="Ontdek meer"
+          href="#"
+        />
+        <Card
+          title="Growth & Marketing"
+          description="We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. "
+          ctaLabel="Ontdek meer"
+          href="#"
+        />
+      </Card.Row>
+      <Card.Row>
+        <Card
+          title="Inhouse & Professionalisering"
+          description="We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. "
+          ctaLabel="Ontdek meer"
+          href="#"
+        />
+        <Card
+          title="Experience & Design"
+          description="We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. "
+          ctaLabel="Ontdek meer"
+          href="#"
+        />
+      </Card.Row>
     </div>
   );
 }

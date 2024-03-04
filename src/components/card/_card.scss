@@ -1,0 +1,47 @@
+.card {
+  display: block;
+  font-size: 16px;
+  line-height: 1.75;
+  color: white;
+  text-decoration: none;
+  background-color: $primary-500;
+  padding: 40px;
+  border-radius: 48px;
+  flex-grow: 0;
+  width: 1024px;
+
+  :visited {
+    color: white;
+  }
+
+  > * {
+    display: block;
+    max-width: 640px;
+    margin: auto;
+  }
+
+  * + * {
+    margin-top: 24px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600px;
+    line-height: 1.33;
+  }
+
+  &__description {
+    font-weight: 300;
+  }
+
+  &__cta {
+    font-weight: 500;
+  }
+}
+
+.card-row {
+  display: flex;
+  gap: 24px;
+  margin: 16px 0;
+  justify-content: center;
+}
