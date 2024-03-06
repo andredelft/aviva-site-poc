@@ -28,17 +28,33 @@ code {
   font-family: $font-monospace;
 }
 
+#curtain {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
 h1 {
   font-size: 100px;
   text-wrap: balance;
   font-weight: 800;
   line-height: 1;
   margin: 2rem 0;
+
+  @media (max-width: 900px) {
+    font-size: 80px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 60px;
+  }
 }
 
 .page {
   margin: auto;
   max-width: 1440px;
-  width: 100%;
-  padding: 20rem 1rem;
+  padding: 5rem 1rem;
 }

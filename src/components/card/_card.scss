@@ -1,37 +1,42 @@
 .card {
-  display: block;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
   font-size: 16px;
   line-height: 1.75;
   color: white;
   text-decoration: none;
-  background-color: $primary-500;
   padding: 40px;
-  border-radius: 48px;
   flex-grow: 0;
-  width: 1024px;
+  max-width: 1024px;
+
+  canvas {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: -1;
+
+    @at-root .no-curtains & {
+      opacity: 1;
+    }
+  }
 
   :visited {
     color: white;
   }
 
-  > * {
-    display: block;
-    max-width: 640px;
-    margin: auto;
-  }
-
-  * + * {
-    margin-top: 24px;
-  }
-
-  &__title {
+  h3 {
     font-size: 24px;
-    font-weight: 600px;
+    font-weight: 600;
     line-height: 1.33;
+    margin: 0 0 24px 0;
   }
 
-  &__description {
+  p {
     font-weight: 300;
+    margin: 0;
   }
 
   &__cta {
@@ -44,4 +49,8 @@
   gap: 24px;
   margin: 16px 0;
   justify-content: center;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 }
