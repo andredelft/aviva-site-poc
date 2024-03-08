@@ -1,0 +1,51 @@
+@import 'variables-and-mixins';
+
+// Disable Bootstrap container system in favour of our own.
+$container-max-widths: ();
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: $sm-width,
+  md: $md-width,
+  lg: $lg-width,
+  xl: $xl-width,
+);
+
+$grid-gutter-width: 1.5rem;
+$container-padding-x: 1.5rem;
+
+@import 'vendor/bootstrap/bootstrap-grid';
+
+.container {
+  padding: 0 $container-padding-x;
+  margin: auto;
+  max-width: rem-calc(1220);
+
+  @include sm {
+    &--fit-content {
+      max-width: fit-content;
+    }
+  }
+
+  &--sm {
+    max-width: $sm-width;
+  }
+
+  &--md {
+    max-width: $md-width;
+  }
+
+  &--lg {
+    max-width: $lg-width;
+  }
+
+  &--xl {
+    max-width: $xl-width;
+  }
+
+  // Don't use gutters for containers inside containers
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,28 @@
+@use "sass:math";
+// https://gist.github.com/elvism16/f72127086960775a06a6bad36f61ab23
+
+// This strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return math.div($num, ($num * 0 + 1));
+}
+
+@function convert-to-rem($value) {
+  $value: math.div(strip-unit($value), 16) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // turn 0rem into 0
+  @return $value;
+}
+
+// rem-calc(10 20 30px 40);
+@function rem-calc($values) {
+  $max: length($values);
+
+  @if $max == 1 {
+    @return convert-to-rem(nth($values, 1));
+  }
+
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i)));
+  }
+  @return $remValues;
+}
