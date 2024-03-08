@@ -1,9 +1,7 @@
 // Fonts
-$font-primary: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-sans-serif;
-$font-monospace: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-monospace;
+$font-primary: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+  'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$font-monospace: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 
 // Colors
 $primary-700: #08459b;
@@ -14,7 +12,11 @@ $primary-300: #77adf8;
 $primary-200: #9ec4fa;
 $primary-100: #ecf3fe;
 
+$secondary-dark-900: #142129;
+
 $brand-color: $primary-500;
+
+$client-greenchoice: #ffc84a;
 
 // Breakpoints
 $sm-width: 576px;

@@ -1,0 +1,56 @@
+@import 'src/assets/scss/variables-and-mixins';
+
+.case-hero {
+  &__image {
+    display: block;
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+  }
+
+  &__content {
+    --theme-color: #{$client-greenchoice};
+    position: relative;
+    padding: 40px 0 80px;
+    background: var(--theme-color);
+
+    &:target {
+      scroll-margin-top: 200px;
+    }
+
+    dl {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 40px;
+
+      div {
+        flex: 1 1 25%;
+      }
+
+      dt {
+        display: block;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__intro {
+    display: flex;
+    gap: 24px;
+
+    &-left {
+      flex: 0 1 30%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    &-right {
+      flex: 0 1 70%;
+
+      a {
+        margin-top: rem-calc(8);
+      }
+    }
+  }
+}

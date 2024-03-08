@@ -1,0 +1,21 @@
+@import 'src/assets/scss/variables-and-mixins';
+
+.grid-intro {
+  margin-bottom: rem-calc(40);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  &__link-container {
+    margin-top: rem-calc(24);
+
+    @include lg {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      height: 100%;
+      margin-top: 0;
+    }
+  }
+}
