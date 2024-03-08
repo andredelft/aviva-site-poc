@@ -1,0 +1,49 @@
+@import 'src/assets/scss/variables-and-mixins';
+
+body {
+  font-family: $font-primary;
+  line-height: 1.4;
+  color: $secondary-dark-900;
+  font-size: rem-calc(20);
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  text-wrap: balance;
+}
+
+h1,
+.h1 {
+  margin: 0.3em 0;
+  font-size: rem-calc(100);
+  font-weight: 800;
+  line-height: 1;
+
+  @media (max-width: 900px) {
+    font-size: rem-calc(80);
+  }
+
+  @media (max-width: 600px) {
+    font-size: rem-calc(60);
+  }
+}
+
+h3,
+.h3 {
+  margin-bottom: 0.6em;
+  font-size: rem-calc(40);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: $brand-color;
+}

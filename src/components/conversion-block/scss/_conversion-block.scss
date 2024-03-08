@@ -1,0 +1,21 @@
+@import "src/assets/scss/variables-and-mixins";
+
+.conversion-block {
+  display: inline-flex;
+  flex-direction: column;
+  padding: rem-calc(8 16);
+  font-weight: 700;
+  border-radius: rem-calc(16);
+  color: var(--theme-color);
+  background: $secondary-dark-900;
+
+  span {
+    &:first-child {
+      font-size: rem-calc(16);
+    }
+
+    &:nth-child(2) {
+      font-size: rem-calc(40);
+    }
+  }
+}

@@ -1,16 +1,18 @@
+@import "src/assets/scss/variables-and-mixins";
+
 .card {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
-  font-size: 16px;
+  gap: rem-calc(24);
+  font-size: rem-calc(16);
   line-height: 1.75;
   color: white;
   text-decoration: none;
-  padding: 40px;
+  padding: rem-calc(40);
   flex-grow: 0;
-  max-width: 1024px;
+  max-width: rem-calc(1024);
 
   canvas {
     position: absolute;
@@ -28,10 +30,10 @@
   }
 
   h3 {
-    font-size: 24px;
+    font-size: rem-calc(24);
     font-weight: 600;
     line-height: 1.33;
-    margin: 0 0 24px 0;
+    margin: rem-calc(0 0 24 0);
   }
 
   p {
@@ -46,8 +48,8 @@
 
 .card-row {
   display: flex;
-  gap: 24px;
-  margin: 16px 0;
+  gap: rem-calc(24);
+  margin: rem-calc(16 0);
   justify-content: center;
 
   @media (max-width: 900px) {

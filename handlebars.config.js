@@ -21,4 +21,14 @@ module.exports = [
       },
     },
   },
+  {
+    entry: path.join(process.cwd(), 'src', 'layouts', 'default.hbs'),
+    output: path.join(process.cwd(), 'build', 'case.html'),
+    data: {
+      title: 'Case',
+      properties: {
+        pagecontent: 'case',
+      },
+    },
+  },
 ];

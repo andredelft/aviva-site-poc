@@ -1,9 +1,7 @@
-@import "variables";
+@import 'src/assets/scss/variables-and-mixins';
 
 body {
   margin: 0;
-  font-family: $font-primary;
-  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,24 +19,6 @@ code {
   z-index: -1;
 }
 
-h1 {
-  font-size: 100px;
-  text-wrap: balance;
-  font-weight: 800;
-  line-height: 1;
-  margin: 2rem 0;
-
-  @media (max-width: 900px) {
-    font-size: 80px;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 60px;
-  }
-}
-
 .page {
-  margin: auto;
-  max-width: 1440px;
-  padding: 5rem 1rem;
+  padding: rem-calc(80 0);
 }

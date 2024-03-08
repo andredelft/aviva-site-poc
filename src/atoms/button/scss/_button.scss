@@ -1,0 +1,11 @@
+@import 'src/assets/scss/variables-and-mixins';
+
+.button {
+  display: inline-flex;
+  padding: rem-calc(8 24);
+  text-align: center;
+  border-radius: rem-calc(100);
+  color: $secondary-dark-900;
+  border: 2px solid;
+  text-decoration: none;
+}

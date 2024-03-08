@@ -1,0 +1,7 @@
+@import "src/assets/scss/variables-and-mixins";
+
+.home-blue {
+  color: white;
+  background: $primary-500;
+  height: rem-calc(520);
+}

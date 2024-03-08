@@ -1,0 +1,49 @@
+@import 'src/assets/scss/variables-and-mixins';
+
+.featured-case {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: rem-calc(48);
+  min-height: rem-calc(810);
+  --theme-color: #{$client-greenchoice};
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__cta {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: rem-calc(16);
+    width: rem-calc(950);
+    padding: rem-calc(16 40 16 16);
+    background: var(--theme-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: inherit;
+    border-radius: rem-calc(16);
+    text-decoration: none;
+    transform-origin: center;
+    transition: transform 0.1s ease-out;
+
+    &:active {
+      transform: scale(0.8);
+    }
+
+    div {
+      flex-shrink: 0;
+    }
+
+    i {
+      margin-left: auto;
+    }
+  }
+}

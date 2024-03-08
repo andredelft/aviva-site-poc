@@ -1,44 +1,54 @@
-<div id="curtain"></div>
+{{> components/home-hero/home-hero }}
+
+{{> components/featured-case/featured-case }}
 
 <div class="page">
-    <h1>Digitale oplossingen die meegroeien.</h1>
+  {{> components/grid-intro/grid-intro
+    title="We stappen in waar jij dat wilt en ons nodig hebt."
+    text="We bouwen graag mooie oplossingen en nemen je met liefde alles uit handen. Ook zijn we er als je alleen één van onze expertises kunt gebruiken of wilt veranderen van it-partner."
+    linkText="Bekijk ons werk"
+  }}
 
+  <div class="container container--xl">
     {{#> components/card/card-row }}
-        {{> components/card/card
-                title='Experience & Design'
-                description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
-                ctaLabel='Ontdek meer'
-                href='#'
-        }}
+      {{> components/card/card
+        title='Experience & Design'
+        description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
+        ctaLabel='Ontdek meer'
+        href='#'
+      }}
 
-        {{> components/card/card
-                title='Development & Engineering'
-                description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
-                ctaLabel='Ontdek meer'
-                href='#'
-        }}
+      {{> components/card/card
+        title='Development & Engineering'
+        description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
+        ctaLabel='Ontdek meer'
+        href='#'
+      }}
 
-        {{> components/card/card
-                title='Growth & Marketing'
-                description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
-                ctaLabel='Ontdek meer'
-                href='#'
-        }}
+      {{> components/card/card
+        title='Growth & Marketing'
+        description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
+        ctaLabel='Ontdek meer'
+        href='#'
+      }}
     {{/ components/card/card-row }}
 
     {{#> components/card/card-row }}
-        {{> components/card/card
-                title='Inhouse & Professionalisering'
-                description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
-                ctaLabel='Ontdek meer'
-                href='#'
-        }}
+      {{> components/card/card
+        title='Inhouse & Professionalisering'
+        description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
+        ctaLabel='Ontdek meer'
+        href='#'
+      }}
 
-        {{> components/card/card
-                title='Experience & Design'
-                description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
-                ctaLabel='Ontdek meer'
-                href='#'
-        }}
+      {{> components/card/card
+        title='Experience & Design'
+        description='We werken samen met jouw IT-organisatie om de teams, architecture en platformen te bouwen die je digitale business vooruit brengen. '
+        ctaLabel='Ontdek meer'
+        href='#'
+      }}
     {{/ components/card/card-row }}
+  </div>
 </div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
