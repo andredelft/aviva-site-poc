@@ -1,12 +1,16 @@
 const ctaEl = document.querySelector('.js-featured-case-cta');
+const caseImageEl = document.querySelector('.js-featured-case-image');
 
-if (ctaEl) {
+if (ctaEl && caseImageEl) {
   ctaEl.addEventListener('click', (e) => {
     e.preventDefault();
-    e.target.classList.add('featured-case__cta--pressed');
+
+    caseImageEl.style['view-transition-name'] = 'case-image';
+    ctaEl.style['view-transition-name'] = 'case-content';
+    ctaEl.classList.add('featured-case__cta--pressed');
 
     setTimeout(() => {
-      window.location.href = e.target.href;
+      window.location.href = ctaEl.href;
     }, 100);
   });
 }
