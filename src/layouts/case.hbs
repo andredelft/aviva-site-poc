@@ -7,13 +7,15 @@
     {{> layouts/tags/head }}
 </head>
 
-<body>
+<body class="{{clientClass}}">
 
 <div id="curtain"></div>
 
 {{> (lookup properties 'pagecontent')}}
 
-{{> page-transitions/to-case-page/to-case-page }}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+{{> page-transitions/on-case-page/on-case-page }}
 
 </body>
 </html>

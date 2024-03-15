@@ -12,11 +12,21 @@ $primary-300: #77adf8;
 $primary-200: #9ec4fa;
 $primary-100: #ecf3fe;
 
-$secondary-dark-900: #142129;
+$secondary-900: #142129;
+$secondary-700: #213744;
+$secondary-600: #2e4e60;
+$secondary-500: #6d8390;
+$secondary-400: #a6afb4;
+$secondary-300: #bcc3c7;
+$secondary-200: #d3d7da;
+$secondary-100: #e9ebec;
+$secondary-000: #ffffff;
 
-$brand-color: $primary-500;
+$primary-default: $primary-500;
+$secondary-dark-default: $secondary-900;
+$secondary-light-default: $secondary-000;
 
-$client-greenchoice: #ffc84a;
+// For the client-colors, see _client-colors.scss
 
 // Breakpoints
 $sm-width: 576px;

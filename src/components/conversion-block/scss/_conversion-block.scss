@@ -1,4 +1,4 @@
-@import "src/assets/scss/variables-and-mixins";
+@import 'src/assets/scss/variables-and-mixins';
 
 .conversion-block {
   display: inline-flex;
@@ -6,8 +6,8 @@
   padding: rem-calc(8 16);
   font-weight: 700;
   border-radius: rem-calc(16);
-  color: var(--theme-color);
-  background: $secondary-dark-900;
+  color: var(--client-primary);
+  background: var(--client-secondary);
 
   span {
     &:first-child {

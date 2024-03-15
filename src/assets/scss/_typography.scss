@@ -3,7 +3,7 @@
 body {
   font-family: $font-primary;
   line-height: 1.4;
-  color: $secondary-dark-900;
+  color: $secondary-dark-default;
   font-size: rem-calc(20);
 }
 
@@ -45,5 +45,5 @@ h3,
 }
 
 a {
-  color: $brand-color;
+  color: $primary-default;
 }

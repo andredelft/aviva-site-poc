@@ -1,0 +1,32 @@
+@import 'src/assets/scss/variables-and-mixins';
+
+$client-greenchoice-primary: #ffc84a;
+$client-greenchoice-secondary: $secondary-dark-default;
+
+$client-this-is-eindhoven-primary: #ffc2eb;
+$client-this-is-eindhoven-secondary: $secondary-dark-default;
+
+$client-plaisio-primary: #dc3545;
+$client-plaisio-secondary: $secondary-light-default;
+
+:root {
+  --client-primary: #{$primary-default};
+  --client-secondary: #{$secondary-light-default};
+}
+
+.client {
+  &-greenchoice {
+    --client-primary: #{$client-greenchoice-primary};
+    --client-secondary: #{$client-greenchoice-secondary};
+  }
+
+  &-this-is-eindhoven {
+    --client-primary: #{$client-this-is-eindhoven-primary};
+    --client-secondary: #{$client-this-is-eindhoven-secondary};
+  }
+
+  &-plaisio {
+    --client-primary: #{$client-plaisio-primary};
+    --client-secondary: #{$client-plaisio-secondary};
+  }
+}

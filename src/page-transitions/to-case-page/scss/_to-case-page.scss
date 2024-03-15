@@ -1,0 +1,16 @@
+@import 'src/assets/scss/variables-and-mixins';
+
+.to-case-page-transition {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 105dvh;
+  background-color: var(--client-primary);
+  transform: translateY(100%);
+  transition: 0.5s transform cubic-bezier(0.23, 1, 0.32, 1);
+
+  &--do-transition {
+    transform: translateY(0);
+  }
+}

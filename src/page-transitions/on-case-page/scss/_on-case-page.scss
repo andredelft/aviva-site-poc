@@ -1,0 +1,32 @@
+@import 'src/assets/scss/variables-and-mixins';
+
+.on-case-page-transition {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100dvh;
+  background-color: var(--client-primary);
+  animation: 0.6s ease-in both on-case-page-transition;
+
+  // Only do the load transition when no specific hash position on the page is targeted (e.g. #case)
+  @at-root html:has(:target) & {
+    display: none;
+  }
+}
+
+@keyframes on-case-page-transition {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(65%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(65%);
+  }
+}

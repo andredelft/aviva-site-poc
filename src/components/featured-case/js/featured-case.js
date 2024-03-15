@@ -7,6 +7,7 @@ if (ctaEl && caseImageEl) {
 
     caseImageEl.style['view-transition-name'] = 'case-image';
     ctaEl.style['view-transition-name'] = 'case-content';
+
     ctaEl.classList.add('featured-case__cta--pressed');
 
     setTimeout(() => {

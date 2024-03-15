@@ -7,7 +7,6 @@
   align-items: flex-end;
   padding: rem-calc(48);
   min-height: rem-calc(810);
-  --theme-color: #{$client-greenchoice};
 
   img {
     position: absolute;
@@ -25,7 +24,7 @@
     gap: rem-calc(16);
     width: rem-calc(950);
     padding: rem-calc(16 40 16 16);
-    background: var(--theme-color);
+    background: var(--client-primary);
     font-size: 1.5rem;
     font-weight: 700;
     color: inherit;
