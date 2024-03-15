@@ -6,10 +6,6 @@
     width: 100%;
     height: 65dvh;
     object-fit: cover;
-
-    &:has(+ *:target) {
-      view-transition-name: case-image;
-    }
   }
 
   &__content {
@@ -20,7 +16,6 @@
 
     &:target {
       scroll-margin-top: rem-calc(200);
-      view-transition-name: case-content;
     }
 
     dl {

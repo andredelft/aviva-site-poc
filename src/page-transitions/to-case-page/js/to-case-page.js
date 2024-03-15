@@ -3,12 +3,6 @@ const transitionDiv = document.querySelector('.js-to-case-page-transition');
 if (transitionDiv) {
   const toCaseLinks = document.querySelectorAll('[href*=case]');
   toCaseLinks.forEach((link) => {
-    const isFeaturedCaseCTA = link.classList.contains('js-featured-case-cta');
-
-    if (isFeaturedCaseCTA) {
-      return; // Ignore, since the featured Case CTA button has it's own transition to the case page.
-    }
-
     link.addEventListener('click', (e) => {
       e.preventDefault();
 
