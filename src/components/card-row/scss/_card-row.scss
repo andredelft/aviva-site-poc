@@ -1,0 +1,12 @@
+@import 'src/assets/scss/variables-and-mixins';
+
+.card-row {
+  display: flex;
+  gap: rem-calc(24);
+  margin: rem-calc(16 0);
+  justify-content: center;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}

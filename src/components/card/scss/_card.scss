@@ -1,4 +1,4 @@
-@import "src/assets/scss/variables-and-mixins";
+@import 'src/assets/scss/variables-and-mixins';
 
 .card {
   position: relative;
@@ -43,16 +43,5 @@
 
   &__cta {
     font-weight: 500;
-  }
-}
-
-.card-row {
-  display: flex;
-  gap: rem-calc(24);
-  margin: rem-calc(16 0);
-  justify-content: center;
-
-  @media (max-width: 900px) {
-    flex-direction: column;
   }
 }

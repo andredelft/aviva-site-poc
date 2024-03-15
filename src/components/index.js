@@ -1,7 +1,8 @@
 import './home-hero';
 import './case-hero';
 
-import './grid-intro';
+import './card-row-intro';
+import './card-row';
 import './card';
 
 import './featured-case';
