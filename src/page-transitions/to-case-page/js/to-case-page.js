@@ -23,6 +23,14 @@ if (transitionDiv) {
       setTimeout(() => {
         window.location.href = href;
       }, 500);
+
+      setTimeout(() => {
+        /** This makes sure the classes are removed, so when the back button is clicked (especially on Safari), the transitionDiv is back to it's original state **/
+        transitionDiv.classList.remove('to-case-page-transition--do-transition');
+        transitionDiv.classList.remove('client-greenchoice');
+        transitionDiv.classList.remove('client-this-is-eindhoven');
+        transitionDiv.classList.remove('client-plaisio');
+      }, 600);
     });
   });
 }

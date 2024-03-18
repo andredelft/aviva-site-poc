@@ -8,9 +8,10 @@
   height: 105dvh;
   background-color: var(--client-primary);
   transform: translateY(100%);
-  transition: 0.5s transform cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 11;
 
   &--do-transition {
     transform: translateY(0);
+    transition: 0.5s transform cubic-bezier(0.23, 1, 0.32, 1);
   }
 }
