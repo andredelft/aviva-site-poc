@@ -1,3 +1,5 @@
+import './header';
+
 import './home-hero';
 import './case-hero';
 

@@ -8,12 +8,12 @@
     "build": "webpack && node handlebars --build"
   },
   "dependencies": {
-    "curtainsjs": "^8.1.5"
+    "curtainsjs": "^8.1.5",
+    "gsap": "^3.12.5"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
-    "handlebars": "^4.7.7",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^8.3.0",
     "chokidar": "^3.5.1",
@@ -22,6 +22,7 @@
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "file-loader": "^6.2.0",
+    "handlebars": "^4.7.7",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.0.2",
