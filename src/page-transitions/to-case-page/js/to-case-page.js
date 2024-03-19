@@ -15,6 +15,7 @@ if (transitionDiv) {
       } else if (href.includes('plaisio')) {
         transitionDiv.classList.add('client-plaisio');
       } else {
+        window.location.href = href;
         return;
       }
 
@@ -23,14 +24,23 @@ if (transitionDiv) {
       setTimeout(() => {
         window.location.href = href;
       }, 500);
-
-      setTimeout(() => {
-        /** This makes sure the classes are removed, so when the back button is clicked (especially on Safari), the transitionDiv is back to it's original state **/
-        transitionDiv.classList.remove('to-case-page-transition--do-transition');
-        transitionDiv.classList.remove('client-greenchoice');
-        transitionDiv.classList.remove('client-this-is-eindhoven');
-        transitionDiv.classList.remove('client-plaisio');
-      }, 600);
     });
+  });
+
+  /** https://stackoverflow.com/questions/43043113/how-to-force-reloading-a-page-when-using-browser-back-button#answer-43043658 **/
+  window.addEventListener('pageshow', function ({ persisted }) {
+    const { performance, location } = window;
+    const backButtonIsClicked =
+      persisted ||
+      (typeof performance != 'undefined' &&
+        performance.getEntriesByType('navigation')[0].type === 'back_forward');
+
+    if (backButtonIsClicked) {
+      /** Reset the transition div when the back button is clicked (important for Safari, since otherwise, the old state of the div covers the whole page): **/
+      transitionDiv.classList.remove('to-case-page-transition--do-transition');
+      transitionDiv.classList.remove('client-greenchoice');
+      transitionDiv.classList.remove('client-this-is-eindhoven');
+      transitionDiv.classList.remove('client-plaisio');
+    }
   });
 }
