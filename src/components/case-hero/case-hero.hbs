@@ -1,7 +1,8 @@
 <div class="case-hero">
   <img class="case-hero__image js-case-hero-image" src="{{imageSrc}}" alt="" data-bg-dark />
 
-  <div class="case-hero__content js-case-hero-content" id="case" data-bg-light>
+  <div class="case-hero__content js-case-hero-content" id="case"
+       {{#if isContentBgDark}}data-bg-dark{{else}}data-bg-light{{/if}}>
     <div class="container">
       <dl>
         <div>
