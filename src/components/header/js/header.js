@@ -1,5 +1,3 @@
-const headerHeight = 94;
-
 const header = document.querySelector('.js-header');
 const headerContent = document.querySelector('.js-header-content');
 
@@ -16,39 +14,65 @@ topSlice.appendChild(topSliceContent);
 bottomSlice.appendChild(bottomSliceContent);
 
 handleScrollOrResize();
-window.addEventListener('resize', handleScrollOrResize);
+handleResize();
+
+window.addEventListener('resize', () => {
+  handleScrollOrResize();
+  handleResize();
+});
 window.addEventListener('scroll', handleScrollOrResize);
 
+header.classList.add('header--initialized');
+
 function handleScrollOrResize() {
-  const darkSections = document.querySelectorAll('[data-dark-bg]');
-  let topSliceIsSet = false;
-  let topSliceTextColor = 'dark';
-  let bottomSliceTextColor = 'dark';
+  const bgElements = document.querySelectorAll('[data-bg-dark], [data-bg-light]');
 
-  darkSections.forEach((darkSection) => {
-    const { top, bottom } = darkSection.getBoundingClientRect();
+  let topSliceTextColor = 'black';
+  let topSliceBgColor = 'rgba(255, 255, 255, 0.1)';
+  let bottomSliceTextColor = 'black';
+  let bottomSliceBgColor = 'rgba(0, 0, 0, 0.1)';
 
-    if (!topSliceIsSet) {
-      if (top <= 0 && bottom > 0) {
-        const topSlicePixelsOfHeader = Math.min(headerHeight, bottom);
-        const topSlicePercentage = (topSlicePixelsOfHeader / headerHeight) * 100;
-        topSlice.style.setProperty('--header-slice-height', `${topSlicePercentage}%`);
-        topSliceTextColor = 'white';
+  let topSlicePercentage = 100;
+  let bottomSlicePercentage = 0;
 
-        const bottomSlicePercentage = 100 - topSlicePercentage;
-        bottomSlice.style.setProperty('--header-slice-height', `${bottomSlicePercentage}%`);
+  const headerHeight = header.offsetHeight;
 
-        topSliceIsSet = true;
-      }
-    } else {
-      /** The top slice is set. Also the percentage of the bottom slice. Now we only have to determine the text color of the bottom Slice: **/
-      if (top > 0 && top < headerHeight) {
-        bottomSliceTextColor = 'white';
-      }
+  bgElements.forEach((bgEl) => {
+    const { top, bottom } = bgEl.getBoundingClientRect();
+    const isBgForTopSlice = top <= 0 && bottom > 0;
+    const isBgForBottomSlice = top > 0 && top < headerHeight;
+
+    if (isBgForTopSlice) {
+      [topSliceTextColor, topSliceBgColor] = getSliceTextAndBgColor(bgEl);
+    } else if (isBgForBottomSlice) {
+      /** The top slice is set, and also the percentage of the bottom slice. Now we only have to determine the text color of the bottom Slice: **/
+      const bottomSlicePixelsOfHeader = headerHeight - top;
+
+      bottomSlicePercentage = (bottomSlicePixelsOfHeader / headerHeight) * 100;
+      topSlicePercentage = 100 - bottomSlicePercentage;
+
+      [bottomSliceTextColor, bottomSliceBgColor] = getSliceTextAndBgColor(bgEl);
     }
-
-    header.style.setProperty('--header-height', `${headerHeight}px`);
-    topSlice.style.setProperty('--header-text-color', topSliceTextColor);
-    bottomSlice.style.setProperty('--header-text-color', bottomSliceTextColor);
   });
+
+  topSlice.style.setProperty('--header-slice-height', `${topSlicePercentage}%`);
+  bottomSlice.style.setProperty('--header-slice-height', `${bottomSlicePercentage}%`);
+
+  topSlice.style.setProperty('--header-text-color', topSliceTextColor);
+  bottomSlice.style.setProperty('--header-text-color', bottomSliceTextColor);
+
+  topSlice.style.setProperty('--header-bg-color', topSliceBgColor);
+  bottomSlice.style.setProperty('--header-bg-color', bottomSliceBgColor);
+}
+
+function handleResize() {
+  header.style.setProperty('--header-height', `${header.offsetHeight}px`);
+}
+
+function getSliceTextAndBgColor(bgEl) {
+  if (bgEl.hasAttribute('data-bg-dark')) {
+    return ['white', 'rgba(0, 0, 0, 0.1)'];
+  }
+
+  return ['black', 'rgba(255, 255, 255, 0.1)'];
 }

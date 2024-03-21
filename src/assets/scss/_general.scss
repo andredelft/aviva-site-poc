@@ -22,3 +22,7 @@ code {
 .page {
   padding: rem-calc(80 0);
 }
+
+.visually-hidden {
+  @include visually-hidden;
+}
