@@ -7,11 +7,13 @@
     height: 65dvh;
     object-fit: cover;
 
-    @supports (animation-timeline: scroll()) {
+    @supports (animation-timeline: view()) {
       animation-name: parallax;
       animation-timing-function: linear;
+      animation-fill-mode: both;
       animation-duration: 1ms; // Required for Firefox
-      animation-timeline: scroll();
+      animation-timeline: view(0 100%);
+      // Meaning: start with animating on scroll ("scrubbing" in gsap) when the top of the image is at 100% from the bottom of the viewport and end the bottom of the image is at 0% from the top of the viewport. More: https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/view#setting_an_anonymous_view_progress_timeline
     }
   }
 
@@ -20,10 +22,6 @@
     padding: rem-calc(40 0 80);
     color: var(--client-secondary);
     background: var(--client-primary);
-
-    &:target {
-      scroll-margin-top: rem-calc(200);
-    }
 
     dl {
       display: flex;
