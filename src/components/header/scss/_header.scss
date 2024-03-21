@@ -14,6 +14,7 @@
     left: 0;
     pointer-events: none;
     overflow: hidden;
+    transition: 0.05s height;
 
     &__content {
       position: absolute;

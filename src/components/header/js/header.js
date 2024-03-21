@@ -28,8 +28,9 @@ function handleScrollOrResize() {
   const bgElements = document.querySelectorAll('[data-bg-dark], [data-bg-light]');
 
   let topSliceTextColor = 'black';
-  let topSliceBgColor = 'rgba(255, 255, 255, 0.1)';
   let bottomSliceTextColor = 'black';
+
+  let topSliceBgColor = 'rgba(255, 255, 255, 0.1)';
   let bottomSliceBgColor = 'rgba(0, 0, 0, 0.1)';
 
   let topSlicePercentage = 100;
@@ -55,12 +56,15 @@ function handleScrollOrResize() {
     }
   });
 
+  // Height:
   topSlice.style.setProperty('--header-slice-height', `${topSlicePercentage}%`);
   bottomSlice.style.setProperty('--header-slice-height', `${bottomSlicePercentage}%`);
 
+  // Text:
   topSlice.style.setProperty('--header-text-color', topSliceTextColor);
   bottomSlice.style.setProperty('--header-text-color', bottomSliceTextColor);
 
+  // Background:
   topSlice.style.setProperty('--header-bg-color', topSliceBgColor);
   bottomSlice.style.setProperty('--header-bg-color', bottomSliceBgColor);
 }
