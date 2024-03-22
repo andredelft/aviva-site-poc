@@ -4,6 +4,8 @@ const headerContent = document.querySelector('.js-header-content');
 const topSlice = document.querySelector('.js-header-slice-top');
 const bottomSlice = document.querySelector('.js-header-slice-bottom');
 
+const bgElements = document.querySelectorAll('[data-bg-dark], [data-bg-light]');
+
 const topSliceContent = headerContent.cloneNode(true);
 const bottomSliceContent = headerContent.cloneNode(true);
 
@@ -25,7 +27,6 @@ window.addEventListener('scroll', handleScrollOrResize);
 header.classList.add('header--initialized');
 
 function handleScrollOrResize() {
-  const bgElements = document.querySelectorAll('[data-bg-dark], [data-bg-light]');
   const headerHeight = header.offsetHeight;
 
   let bgElForTopSlice;
@@ -43,22 +44,17 @@ function handleScrollOrResize() {
     }
   });
 
-  let topSlicePercentage;
-  let bottomSlicePercentage;
-
   if (bgElForBottomSlice) {
     const { top } = bgElForBottomSlice.getBoundingClientRect();
     const bottomSlicePixelsOfHeader = headerHeight - top;
 
-    bottomSlicePercentage = (bottomSlicePixelsOfHeader / headerHeight) * 100;
-    topSlicePercentage = 100 - bottomSlicePercentage;
+    const bottomSlicePercentage = (bottomSlicePixelsOfHeader / headerHeight) * 100;
+    setSliceHeight(topSlice, 100 - bottomSlicePercentage);
+    setSliceHeight(bottomSlice, bottomSlicePercentage);
   } else {
-    topSlicePercentage = 100;
-    bottomSlicePercentage = 0;
+    setSliceHeight(topSlice, 100);
+    setSliceHeight(bottomSlice, 0);
   }
-
-  topSlice.style.setProperty('--header-slice-height', `${topSlicePercentage}%`);
-  bottomSlice.style.setProperty('--header-slice-height', `${bottomSlicePercentage}%`);
 
   setSliceBgClass(topSlice, bgElForTopSlice);
   setSliceBgClass(bottomSlice, bgElForBottomSlice);
@@ -76,4 +72,8 @@ function setSliceBgClass(sliceEl, bgEl) {
     sliceEl.classList.add('header-slice--bg-light');
     sliceEl.classList.remove('header-slice--bg-dark');
   }
+}
+
+function setSliceHeight(sliceEl, percentage) {
+  sliceEl.style.setProperty('--header-slice-height', `${percentage}%`);
 }
