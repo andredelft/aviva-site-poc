@@ -1,6 +1,17 @@
 @import 'src/assets/scss/variables-and-mixins';
 
 .case-hero {
+  &::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    height: rem-calc(200);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+    z-index: 1;
+  }
+
   &__image {
     display: block;
     width: 100%;
