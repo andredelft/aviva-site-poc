@@ -45,15 +45,12 @@
     gap: 24px;
 
     &-left {
-      flex: 0 1 30%;
       display: flex;
       justify-content: flex-end;
       align-items: flex-start;
     }
 
     &-right {
-      flex: 0 1 70%;
-
       a {
         margin-top: rem-calc(8);
       }

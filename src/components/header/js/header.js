@@ -1,14 +1,14 @@
 const header = document.querySelector('.js-header');
 const headerContent = document.querySelector('.js-header-content');
 
-const topSlice = document.querySelector('.js-header-top-slice');
-const bottomSlice = document.querySelector('.js-header-bottom-slice');
+const topSlice = document.querySelector('.js-header-slice-top');
+const bottomSlice = document.querySelector('.js-header-slice-bottom');
 
 const topSliceContent = headerContent.cloneNode(true);
 const bottomSliceContent = headerContent.cloneNode(true);
 
-topSliceContent.className = 'header-top-slice__content';
-bottomSliceContent.className = 'header-bottom-slice__content';
+topSliceContent.className = 'header-slice__content';
+bottomSliceContent.className = 'header-slice__content';
 
 topSlice.appendChild(topSliceContent);
 bottomSlice.appendChild(bottomSliceContent);
@@ -26,57 +26,54 @@ header.classList.add('header--initialized');
 
 function handleScrollOrResize() {
   const bgElements = document.querySelectorAll('[data-bg-dark], [data-bg-light]');
-
-  let topSliceTextColor = 'black';
-  let bottomSliceTextColor = 'black';
-
-  let topSliceBgColor = 'rgba(255, 255, 255, 0.1)';
-  let bottomSliceBgColor = 'rgba(0, 0, 0, 0.1)';
-
-  let topSlicePercentage = 100;
-  let bottomSlicePercentage = 0;
-
   const headerHeight = header.offsetHeight;
+
+  let bgElForTopSlice;
+  let bgElForBottomSlice;
 
   bgElements.forEach((bgEl) => {
     const { top, bottom } = bgEl.getBoundingClientRect();
-    const isBgForTopSlice = top <= 0 && bottom > 0;
-    const isBgForBottomSlice = top > 0 && top < headerHeight;
+    const isBgElForTopSlice = top <= 0 && bottom > 0;
+    const isBgElForBottomSlice = top > 0 && top < headerHeight;
 
-    if (isBgForTopSlice) {
-      [topSliceTextColor, topSliceBgColor] = getSliceTextAndBgColor(bgEl);
-    } else if (isBgForBottomSlice) {
-      /** The top slice is set, and also the percentage of the bottom slice. Now we only have to determine the text color of the bottom Slice: **/
-      const bottomSlicePixelsOfHeader = headerHeight - top;
-
-      bottomSlicePercentage = (bottomSlicePixelsOfHeader / headerHeight) * 100;
-      topSlicePercentage = 100 - bottomSlicePercentage;
-
-      [bottomSliceTextColor, bottomSliceBgColor] = getSliceTextAndBgColor(bgEl);
+    if (isBgElForTopSlice) {
+      bgElForTopSlice = bgEl;
+    } else if (isBgElForBottomSlice) {
+      bgElForBottomSlice = bgEl;
     }
   });
 
-  // Height:
+  let topSlicePercentage;
+  let bottomSlicePercentage;
+
+  if (bgElForBottomSlice) {
+    const { top } = bgElForBottomSlice.getBoundingClientRect();
+    const bottomSlicePixelsOfHeader = headerHeight - top;
+
+    bottomSlicePercentage = (bottomSlicePixelsOfHeader / headerHeight) * 100;
+    topSlicePercentage = 100 - bottomSlicePercentage;
+  } else {
+    topSlicePercentage = 100;
+    bottomSlicePercentage = 0;
+  }
+
   topSlice.style.setProperty('--header-slice-height', `${topSlicePercentage}%`);
   bottomSlice.style.setProperty('--header-slice-height', `${bottomSlicePercentage}%`);
 
-  // Text:
-  topSlice.style.setProperty('--header-text-color', topSliceTextColor);
-  bottomSlice.style.setProperty('--header-text-color', bottomSliceTextColor);
-
-  // Background:
-  topSlice.style.setProperty('--header-bg-color', topSliceBgColor);
-  bottomSlice.style.setProperty('--header-bg-color', bottomSliceBgColor);
+  setSliceBgClass(topSlice, bgElForTopSlice);
+  setSliceBgClass(bottomSlice, bgElForBottomSlice);
 }
 
 function handleResize() {
   header.style.setProperty('--header-height', `${header.offsetHeight}px`);
 }
 
-function getSliceTextAndBgColor(bgEl) {
-  if (bgEl.hasAttribute('data-bg-dark')) {
-    return ['white', 'rgba(0, 0, 0, 0.1)'];
+function setSliceBgClass(sliceEl, bgEl) {
+  if (bgEl?.hasAttribute('data-bg-dark')) {
+    sliceEl.classList.add('header-slice--bg-dark');
+    sliceEl.classList.remove('header-slice--bg-light');
+  } else {
+    sliceEl.classList.add('header-slice--bg-light');
+    sliceEl.classList.remove('header-slice--bg-dark');
   }
-
-  return ['black', 'rgba(255, 255, 255, 0.1)'];
 }

@@ -7,13 +7,37 @@
   left: 0;
   z-index: 10;
 
-  &-top-slice,
-  &-bottom-slice {
+  &-slice {
     position: absolute;
     right: 0;
     left: 0;
     pointer-events: none;
     overflow: hidden;
+    --header-text-color: white;
+    --header-bg-color: rgba(0, 0, 0, 0.2);
+
+    &--bg-light {
+      --header-text-color: black;
+      --header-bg-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &--top {
+      top: 0;
+      height: var(--header-slice-height, 100%);
+
+      .header-slice__content {
+        top: 0;
+      }
+    }
+
+    &--bottom {
+      bottom: 0;
+      height: var(--header-slice-height, 0%);
+
+      .header-slice__content {
+        bottom: 0;
+      }
+    }
 
     &__content {
       position: absolute;
@@ -21,49 +45,21 @@
       left: 0;
       height: var(--header-height);
       color: var(--header-text-color);
+      background-color: var(--header-bg-color);
+      z-index: -1;
+      backdrop-filter: blur(5px);
 
       .header__logo,
       nav {
         position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          right: rem-calc(-10);
-          bottom: 0;
-          left: rem-calc(-10);
-          background-color: var(--header-bg-color);
-          backdrop-filter: blur(10px);
-          border-radius: rem-calc(10);
-          z-index: -1;
-        }
       }
-    }
-  }
-
-  &-top-slice {
-    top: 0;
-    height: var(--header-slice-height, 100%);
-
-    &__content {
-      top: 0;
-    }
-  }
-
-  &-bottom-slice {
-    bottom: 0;
-    height: var(--header-slice-height, 0%);
-
-    &__content {
-      bottom: 0;
     }
   }
 
   &__content {
     color: white;
 
-    &--initialized {
+    @at-root .header--initialized & {
       color: transparent;
     }
   }
@@ -71,7 +67,7 @@
   &__inner {
     display: flex;
     align-items: center;
-    padding: rem-calc(24);
+    padding: rem-calc(10 0);
     font-size: rem-calc(20);
   }
 
@@ -88,7 +84,7 @@
     margin-left: auto;
 
     a {
-      font-weight: 500;
+      font-weight: 600;
       text-decoration: none;
       line-height: 1.6;
 

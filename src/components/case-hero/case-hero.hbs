@@ -3,7 +3,7 @@
 
   <div class="case-hero__content js-case-hero-content" id="case"
        {{#if isContentBgDark}}data-bg-dark{{else}}data-bg-light{{/if}}>
-    <div class="container">
+    <div class="container container--xl">
       <dl>
         <div>
           <dt>Client</dt>
@@ -23,27 +23,34 @@
         </div>
       </dl>
 
+
       <div class="case-hero__intro">
-        <div class="case-hero__intro-left">
-          {{> components/conversion-block/conversion-block }}
-        </div>
+        <div class="row">
+          <div class="col-3">
+            <div class="case-hero__intro-left">
+              {{> components/conversion-block/conversion-block }}
+            </div>
+          </div>
 
-        <div class="case-hero__intro-right">
-          <h1 class="h3">Website Compleet vernieuwd met Kentico Xperience 13</h1>
+          <div class="col-6">
+            <div class="case-hero__intro-right">
+              <h1 class="h3">Website Compleet vernieuwd met Kentico Xperience 13</h1>
 
-          <p>
-            We bouwen graag mooie oplossingen en nemen je met liefde alles uit handen. Van interactie-ontwerp
-            tot implementatie en van doelgroeponderzoek tot integratie. Ook zijn we er als je alleen één van onze
-            expertises kunt gebruiken of wilt veranderen van it-partner. We stappen in waar jij dat wilt en ons
-            nodig hebt.
-          </p>
+              <p>
+                We bouwen graag mooie oplossingen en nemen je met liefde alles uit handen. Van interactie-ontwerp
+                tot implementatie en van doelgroeponderzoek tot integratie. Ook zijn we er als je alleen één van onze
+                expertises kunt gebruiken of wilt veranderen van it-partner. We stappen in waar jij dat wilt en ons
+                nodig hebt.
+              </p>
 
-          <p>
-            We zijn trots! Niet zo gek als je in 15 jaar tijd zoveel mooie oplossingen hebt mogen maken voor
-            zulke fijne klanten en mooie merken. Bekijk hieronder een selectie van ons werk.
-          </p>
+              <p>
+                We zijn trots! Niet zo gek als je in 15 jaar tijd zoveel mooie oplossingen hebt mogen maken voor
+                zulke fijne klanten en mooie merken. Bekijk hieronder een selectie van ons werk.
+              </p>
 
-          {{> atoms/button/button text="Wat we hebben gedaan" href="homepage.html" }}
+              {{> atoms/button/button text="Wat we hebben gedaan" href="homepage.html" }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
