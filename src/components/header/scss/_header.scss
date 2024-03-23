@@ -1,71 +1,80 @@
 @import 'src/assets/scss/variables-and-mixins';
 
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10;
-  transition: transform 0.3s ease-in-out;
 
-  &--hidden {
-    transform: translateY(-100%);
-  }
+  @include lg {
+    position: fixed;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out;
 
-  &--hidden-without-transition {
-    transition: none;
+    &--hidden {
+      transform: translateY(-100%);
+    }
+
+    &--hidden-without-transition {
+      transition: none;
+    }
   }
 
   &-slice {
-    position: absolute;
-    right: 0;
-    left: 0;
-    pointer-events: none;
-    overflow: hidden;
-    --header-text-color: white;
-    --header-bg-color: rgba(0, 0, 0, 0.1);
+    display: none;
 
-    &--bg-light {
-      --header-text-color: black;
-      --header-bg-color: rgba(255, 255, 255, 0.1);
-    }
-
-    &--top {
-      top: 0;
-      height: var(--header-slice-height, 100%);
-
-      .header-slice__content {
-        top: 0;
-      }
-    }
-
-    &--bottom {
-      bottom: 0;
-      height: var(--header-slice-height, 0%);
-
-      .header-slice__content {
-        bottom: 0;
-      }
-    }
-
-    &__content {
+    @include lg {
+      display: block;
       position: absolute;
       right: 0;
       left: 0;
-      height: var(--header-height);
-      color: var(--header-text-color);
-      z-index: -1;
-      transition: background-color 0.2s;
+      pointer-events: none;
+      overflow: hidden;
+      --header-text-color: white;
+      --header-bg-color: rgba(0, 0, 0, 0.1);
 
-      @at-root .header--has-background:not(.header--hidden) & {
-        backdrop-filter: blur(5px);
-        background-color: var(--header-bg-color);
-        transition: none;
+      &--bg-light {
+        --header-text-color: black;
+        --header-bg-color: rgba(255, 255, 255, 0.1);
       }
 
-      .header__logo,
-      nav {
-        position: relative;
+      &--top {
+        top: 0;
+        height: var(--header-slice-height, 100%);
+
+        .header-slice__content {
+          top: 0;
+        }
+      }
+
+      &--bottom {
+        bottom: 0;
+        height: var(--header-slice-height, 0%);
+
+        .header-slice__content {
+          bottom: 0;
+        }
+      }
+
+      &__content {
+        position: absolute;
+        right: 0;
+        left: 0;
+        height: var(--header-height);
+        color: var(--header-text-color);
+        z-index: -1;
+        transition: background-color 0.4s, backdrop-filter 0.4s;
+
+        @at-root .header--has-background:not(.header--hidden) & {
+          backdrop-filter: blur(5px);
+          background-color: var(--header-bg-color);
+          transition: none;
+        }
+
+        .header__logo,
+        nav {
+          position: relative;
+        }
       }
     }
   }
@@ -73,8 +82,10 @@
   &__content {
     color: white;
 
-    @at-root .header--initialized & {
-      color: transparent;
+    @include lg {
+      @at-root .header--initialized & {
+        color: transparent;
+      }
     }
   }
 
@@ -92,10 +103,14 @@
   }
 
   nav {
-    display: flex;
-    align-items: center;
-    gap: rem-calc(40);
-    margin-left: auto;
+    display: none;
+
+    @include lg {
+      display: flex;
+      align-items: center;
+      gap: rem-calc(40);
+      margin-left: auto;
+    }
 
     a {
       font-weight: 600;

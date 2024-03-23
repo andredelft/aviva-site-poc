@@ -1,7 +1,96 @@
-@import "src/assets/scss/variables-and-mixins";
+@import 'src/assets/scss/variables-and-mixins';
 
-.home-blue {
+.home-hero {
   color: white;
   background: $primary-500;
-  height: rem-calc(520);
+  padding: rem-calc(120 0 80);
+
+  .phrases {
+    display: grid;
+
+    &:not(:has(.phrase--do-type)) > .phrase .char:first-child::before {
+      content: '';
+      position: absolute;
+      top: 5%;
+      left: 6px;
+      height: 90%;
+      animation: 1s steps(2, end) cursor-when-not-typing;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  .phrase {
+    position: relative;
+    color: transparent;
+    grid-area: 1 / 1;
+
+    .char {
+      position: relative;
+      display: inline-block;
+
+      &--blank-space {
+        @include md-down {
+          display: block;
+          height: 0;
+        }
+      }
+    }
+
+    &--do-type {
+      color: inherit;
+
+      .char {
+        animation: 0s linear typing both var(--typing-delay);
+
+        &::after {
+          position: absolute;
+          top: 5%;
+          height: 90%;
+          content: '';
+          animation: var(--typing-delay-per-char) steps(3, end) cursor-during-typing both
+            var(--typing-delay);
+        }
+
+        &:last-child::after {
+          animation: 1s steps(2, end) cursor-when-not-typing var(--typing-delay);
+          animation-iteration-count: infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes typing {
+  from {
+    color: transparent;
+  }
+
+  to {
+    color: inherit;
+  }
+}
+
+@keyframes cursor-during-typing {
+  0% {
+    border-left: 0;
+  }
+
+  0.1%,
+  99.9% {
+    border-left: 4px solid;
+  }
+
+  100% {
+    border-left: 0;
+  }
+}
+
+@keyframes cursor-when-not-typing {
+  0% {
+    border-left: 4px solid white;
+  }
+
+  100% {
+    border-left: 0;
+  }
 }

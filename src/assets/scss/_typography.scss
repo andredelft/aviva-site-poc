@@ -32,7 +32,7 @@ h1,
   }
 
   @media (max-width: 600px) {
-    font-size: rem-calc(60);
+    font-size: min(#{rem-calc(62)}, 16vw);
   }
 }
 
