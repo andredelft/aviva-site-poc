@@ -24,20 +24,27 @@ if (phraseElements.length > 0) {
     });
 
     phrase.style.setProperty('--typing-delay-per-char', `${TYPING_DELAY_PER_CHARACTER}s`);
+
+    const totalTypingDelay = typingIndex * TYPING_DELAY_PER_CHARACTER;
+    phrase.style.setProperty('--total-typing-delay', `${totalTypingDelay}s`);
+
     phrase.innerHTML = innerHtml;
   });
 
   // Infinite loop over the phrases to type a new word every x seconds:
   let phraseIndex = 0;
   typeNewPhrase();
-  window.setInterval(typeNewPhrase, 5000);
+  window.setInterval(typeNewPhrase, 6000);
 
   function typeNewPhrase() {
-    phraseElements.forEach((phraseEl) => phraseEl.classList.remove('phrase--do-type'));
+    const phraseEl = phraseElements[phraseIndex];
+    phraseEl.classList.add('phrase--do-type');
+    phraseElements.forEach((el) => el.classList.remove('phrase--do-remove'));
 
     window.setTimeout(() => {
-      phraseElements[phraseIndex].classList.add('phrase--do-type');
+      phraseEl.classList.remove('phrase--do-type');
+      phraseEl.classList.add('phrase--do-remove');
       phraseIndex = phraseIndex === phraseElements.length - 1 ? 0 : phraseIndex + 1;
-    }, 700);
+    }, 3500);
   }
 }

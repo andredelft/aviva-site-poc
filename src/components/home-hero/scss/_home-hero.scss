@@ -1,5 +1,12 @@
 @import 'src/assets/scss/variables-and-mixins';
 
+@mixin caret {
+  position: absolute;
+  top: 5%;
+  height: 90%;
+  content: '';
+}
+
 .home-hero {
   color: white;
   background: $primary-500;
@@ -7,16 +14,6 @@
 
   .phrases {
     display: grid;
-
-    &:not(:has(.phrase--do-type)) > .phrase .char:first-child::before {
-      content: '';
-      position: absolute;
-      top: 5%;
-      left: 6px;
-      height: 90%;
-      animation: 1s steps(2, end) cursor-when-not-typing;
-      animation-iteration-count: infinite;
-    }
   }
 
   .phrase {
@@ -43,17 +40,34 @@
         animation: 0s linear typing both var(--typing-delay);
 
         &::after {
-          position: absolute;
-          top: 5%;
-          height: 90%;
-          content: '';
-          animation: var(--typing-delay-per-char) steps(3, end) cursor-during-typing both
+          @include caret;
+          animation: var(--typing-delay-per-char) steps(1) caret-during-typing both
             var(--typing-delay);
         }
 
         &:last-child::after {
-          animation: 1s steps(2, end) cursor-when-not-typing var(--typing-delay);
-          animation-iteration-count: infinite;
+          animation: 1s steps(2, end) caret-when-not-typing var(--typing-delay) infinite;
+        }
+      }
+    }
+
+    &--do-remove {
+      color: inherit;
+
+      .char {
+        --removing-delay-per-character: calc(var(--typing-delay-per-char) / 1.5);
+        --removing-delay: calc(var(--total-typing-delay) - (var(--typing-delay) / 1.5));
+        animation: 0s linear removing both var(--removing-delay);
+
+        &::before {
+          @include caret;
+          left: 6px;
+          animation: var(--removing-delay-per-character) steps(1) caret-during-typing both
+            var(--removing-delay);
+        }
+
+        &:first-child::before {
+          animation: 1s steps(2, end) caret-when-not-typing var(--removing-delay) infinite;
         }
       }
     }
@@ -70,14 +84,24 @@
   }
 }
 
-@keyframes cursor-during-typing {
+@keyframes removing {
+  from {
+    color: inherit;
+  }
+
+  to {
+    color: transparent;
+  }
+}
+
+@keyframes caret-during-typing {
   0% {
     border-left: 0;
   }
 
   0.1%,
   99.9% {
-    border-left: 4px solid;
+    border-left: 4px solid white;
   }
 
   100% {
@@ -85,7 +109,7 @@
   }
 }
 
-@keyframes cursor-when-not-typing {
+@keyframes caret-when-not-typing {
   0% {
     border-left: 4px solid white;
   }
