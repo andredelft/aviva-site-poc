@@ -12,6 +12,10 @@
   background: $primary-500;
   padding: rem-calc(120 0 80);
 
+  h1 {
+    text-wrap: wrap; // Since our default text-wrap: balance doesn't work for this animated text solution
+  }
+
   .phrases {
     display: grid;
   }
