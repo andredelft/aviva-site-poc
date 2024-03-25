@@ -33,7 +33,7 @@ if (phraseElements.length > 0) {
 
   // Infinite loop over the phrases to type a new word every x seconds:
   let phraseIndex = 0;
-  typeNewPhrase();
+  window.setTimeout(typeNewPhrase, 2000);
   window.setInterval(typeNewPhrase, 6000);
 
   function typeNewPhrase() {
