@@ -10,6 +10,7 @@
     position: fixed;
     z-index: 10;
     transition: transform 0.3s ease-in-out;
+    backdrop-filter: blur(5px);
 
     &--hidden {
       transform: translateY(-100%);
@@ -31,11 +32,9 @@
       pointer-events: none;
       overflow: hidden;
       --header-text-color: white;
-      --header-bg-color: rgba(0, 0, 0, 0.1);
 
       &--bg-light {
         --header-text-color: black;
-        --header-bg-color: rgba(255, 255, 255, 0.1);
       }
 
       &--top {
@@ -66,8 +65,7 @@
         transition: background-color 0.4s, backdrop-filter 0.4s;
 
         @at-root .header--has-background:not(.header--hidden) & {
-          backdrop-filter: blur(5px);
-          background-color: var(--header-bg-color);
+          background-color: rgba(0, 0, 0, 0.05);
           transition: none;
         }
 
