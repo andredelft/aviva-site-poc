@@ -24,7 +24,7 @@
       animation-fill-mode: both;
       animation-duration: 1ms; // Required for Firefox
       animation-timeline: view(0 100%);
-      // Meaning: start with animating on scroll ("scrubbing" in gsap) when the top of the image is at 100% from the bottom of the viewport and end the bottom of the image is at 0% from the top of the viewport. More: https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/view#setting_an_anonymous_view_progress_timeline
+      // Meaning: start with animating on scroll ("scrubbing" in gsap) when the top of the image is at 100% from the bottom of the viewport and end when the bottom of the image is at 0% from the top of the viewport. More: https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/view#setting_an_anonymous_view_progress_timeline
     }
   }
 
